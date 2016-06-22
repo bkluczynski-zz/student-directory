@@ -29,9 +29,8 @@ index = 0
 
 while students.length > index
 
-    puts "#{index +1}. #{students[index][:name]} (#{students[index][:cohort]} cohort) (#{students[index][:hobby]} hobby)
-    (#{students[index][:country]})"
-
+  puts "#{index + 1}.#{students[index][:name]}".ljust(20) << " - ".center(10) << "Cohort : #{students[index][:cohort]}".rjust(20) + "||".center(10) + "Hobby : #{students[index][:hobby]}".center(20) +
+  "||".center(10) + "Country : #{students[index][:country]}".center(20)
 
 index += 1
 end
