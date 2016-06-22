@@ -8,7 +8,7 @@ def input_students
   #while the name is not empty, repeat this code
   while !name.empty? do
   # add the student hash to the array
-  students << {name: name, cohort: :november}
+  students << {name: name, cohort: :november, hobby: :snarkling, country: :Poland}
   puts "Now we have #{students.count} students"
   # get another name from the user
   name = gets.chomp
@@ -17,7 +17,6 @@ end
 students
 
 end
-
 
 def print_header
   puts "The students of Villains Academy"
@@ -30,7 +29,8 @@ index = 0
 
 while students.length > index
 
-    puts "#{index +1}. #{students[index][:name]} (#{students[index][:cohort]} cohort)"
+    puts "#{index +1}. #{students[index][:name]} (#{students[index][:cohort]} cohort) (#{students[index][:hobby]} hobby)
+    (#{students[index][:country]})"
 
 
 index += 1
