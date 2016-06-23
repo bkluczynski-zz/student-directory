@@ -3,7 +3,7 @@ def input_students
   puts "To finish, just hit return four times"
   #create an empty array
   students = []
-  name = gets.chomp
+  name = gets.chop
   cohort = gets.chomp
   hobby = gets.chomp
   country = gets.chomp
