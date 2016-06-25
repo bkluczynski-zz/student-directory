@@ -103,7 +103,7 @@ def adding_students(name, cohort)
   @students << {name: name, cohort: cohort}
 end
 
-def try_load_students
+def try_load_students(filename = "students.csv")
   filename = ARGV.first #first argument from the command line
   return if filename.nil? #get out of the method if it isn't given
   if File.exists?(filename) #if it exists
@@ -114,5 +114,6 @@ def try_load_students
     exit
   end
 end
+
 try_load_students
 interactive_menu
