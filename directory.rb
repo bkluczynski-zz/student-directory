@@ -32,23 +32,32 @@ def process(selection)
   end
 end
 
+require 'readline'
+
+def ask_for_input(prompt="", newline=false)
+    prompt += "\n" if newline
+    Readline.readline(prompt, false).squeeze(" ").strip
+end
+
 
 def input_students
-  puts "Please enter the names of the students and their respective cohort "
-  puts "To finish, just hit return twice"
+
+  name = ask_for_input "Please enter the names of the students and
+  their respective cohort. To finish just hit return twice. "
+  cohort = ask_for_input
   # get the first name
-  name = STDIN.gets.chomp
-  cohort = STDIN.gets.chomp
   # while the name is not empty, repeat this code
   while !name.empty? do
     # add the student hash to the array
     adding_students(name, cohort)
-    puts "Now we have #{@students.count} students"
+    count_students
     # get another name from the user
-    name = STDIN.gets.chomp
-    cohort = STDIN.gets.chomp
+    name = ask_for_input "Please enter name of the next student. "
+    cohort = ask_for_input "And his/her cohort. "
   end
 end
+
+
 
 def interactive_menu
   loop do
@@ -60,7 +69,7 @@ end
 def show_students
   print_header
   print_student_list
-  print_footer
+  count_students
 end
 
 def print_header
@@ -74,8 +83,8 @@ def print_student_list
   end
 end
 
-def print_footer
-  puts "Overall, we have #{@students.count} great students"
+def count_students
+@students.count == 1 ? (puts "We have #{@students.count} student") : (puts "We have #{@students.count} students")
 end
 
 def save_students
