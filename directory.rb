@@ -3,8 +3,18 @@ def input_students
   puts "To finish, just hit return four times"
   #create an empty array
   students = []
+  checking_typos = [:January, :February, :March, :April, :May,
+  :June, :July, :August, :September, :October, :November, :December]
+
   name = gets.chomp
-  cohort = gets.chomp
+  cohort = gets.chomp.to_sym
+  if !checking_typos.include?(cohort)
+    puts "Please provide a valid cohort's name choosing from: "
+    puts checking_typos
+    cohort = gets.chomp
+  end
+
+
   hobby = gets.chomp
   country = gets.chomp
 
