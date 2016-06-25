@@ -1,18 +1,54 @@
+
+
+def interactive_menu
+  students = []
+
+  loop do
+
+      # 1. print the menu and ask the user what to do
+      puts "1. Input the students"
+      puts "2. Show the students"
+      puts "9. Exit"
+      # 2. read the input and save it to a variable
+      selection = gets.chomp
+      # 3. do what the user has asked
+      case selection
+        when "1"
+          students = input_students
+        when "2"
+          print_header(students)
+          print(students)
+          print_footer(students)
+        when "9"
+          exit
+        else
+          puts "I don't know what you mean, try again"
+      end
+
+
+
+
+
+  end
+
+end
+
+
+
+
+
+
+
 def input_students
   puts "Please enter the names of the students, a month of your cohort, your hobby and your country of birth. "
   puts "To finish, just hit return four times"
   #create an empty array
-  students = []
   checking_typos = [:January, :February, :March, :April, :May,
   :June, :July, :August, :September, :October, :November, :December]
+  students = []
 
   name = gets.chomp
   cohort = gets.chomp.to_sym
-  if !checking_typos.include?(cohort)
-    puts "Please provide a valid cohort's name choosing from: "
-    puts checking_typos
-    cohort = gets.chomp
-  end
 
 
   hobby = gets.chomp
@@ -20,7 +56,11 @@ def input_students
 
   #while the name is not empty, repeat this code
   while !name.empty? || !cohort.empty? || !hobby.empty? || !country.empty?
-
+    if !checking_typos.include?(cohort)
+      puts "Please provide a valid cohort's name choosing from: "
+      puts checking_typos
+      cohort = gets.chomp
+    end
 
   students << {name: name, cohort: cohort, hobby: hobby, country: country}
 
@@ -86,7 +126,5 @@ def print_footer(names)
 
 end
 #nothing happens until we call the methods
-students = input_students
-print_header(students)
-print(students)
-print_footer(students)
+
+interactive_menu
